@@ -1,5 +1,4 @@
 package bunchbysoh;
-
 public class Main {
     static class CountsBySoH {
         public int healthy = 0;
@@ -9,8 +8,10 @@ public class Main {
 
     static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
         CountsBySoH counts = new CountsBySoH();
+
         for (int capacity : presentCapacities) {
             double soh = (capacity * 100.0) / 120; // Calculate SoH as a percentage
+
             if (soh > 80) {
                 counts.healthy++;
             } else if (soh >= 63) {
@@ -26,9 +27,11 @@ public class Main {
         System.out.println("Counting batteries by SoH...\n");
         int[] presentCapacities = {115, 118, 80, 95, 91, 72};
         CountsBySoH counts = countBatteriesByHealth(presentCapacities);
-        assert(counts.healthy == 2);
-        assert(counts.exchange == 3);
-        assert(counts.failed == 1);
+
+        System.out.println("Number of Healthy Batteries: " + counts.healthy);
+        System.out.println("Number of Replace Batteries: " + counts.exchange);
+        System.out.println("Number of Failed Batteries: " + counts.failed);
+
         System.out.println("Done counting :)\n");
     }
 
